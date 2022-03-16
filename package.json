@@ -16,17 +16,18 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "postinstall": "patch-package",
+    "patch": "patch-package",
     "build-fast": "tsup src/index.ts --format cjs,esm",
     "build": "pnpm run build-fast -- --dts-resolve ",
     "test": "vitest run",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run patch & pnpm run build"
   },
   "license": "MIT",
   "devDependencies": {
     "@egoist/prettier-config": "1.0.0",
     "@milahu/patch-package-with-pnpm-support": "^6.4.8",
     "@types/react": "^17.0.40",
+    "class-variance-authority": "0.1.0",
     "prettier": "2.5.1",
     "react": "^17.0.2",
     "tsup": "5.12.1",
@@ -35,8 +36,5 @@
   },
   "peerDependencies": {
     "react": ">= 16.3.0"
-  },
-  "dependencies": {
-    "class-variance-authority": "0.1.0"
   }
 }
