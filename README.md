@@ -13,8 +13,8 @@
   <a href="https://www.npmjs.com/package/react-cva">
     <img alt="NPM Downloads" src="https://badgen.net/npm/dm/react-cva" />
   </a>
-  <a href="https://twitter.com/NFS_21">
-    <img alt="Follow @NFS_21 on Twitter" src="https://img.shields.io/twitter/follow/NFS_21.svg?style=social&label=Follow" />
+  <a href="https://twitter.com/NFS__21">
+    <img alt="Follow @NFS__21 on Twitter" src="https://img.shields.io/twitter/follow/NFS__21.svg?style=social&label=Follow" />
   </a>
 </p>
 
