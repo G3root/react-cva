@@ -10,6 +10,12 @@ import type {
 
 export type IntrinsicElementsKeys = keyof JSX.IntrinsicElements
 
+type VariantOBJ<Variants> =
+  | (Variants extends VariantsSchema
+      ? VariantsConfig<Variants> & ClassProp
+      : ClassProp)
+  | undefined
+
 export function styled<T extends IntrinsicElementsKeys>(
   Tag: T,
   forwardRef?: boolean,
@@ -39,8 +45,28 @@ export function styled<T extends IntrinsicElementsKeys>(
     ) {
       // Grab a shallow copy of the props
       let _props = Object.assign({}, props)
-      props.className = cx(classes(), props.className)
-      _props.ref = ref
+
+      if (config && config.variants) {
+        const keys = Object.keys(config.variants)
+        let _variants: VariantOBJ<typeof config.variants> = {
+          class: props.className,
+        }
+        for (let index = 0; index < keys.length; index++) {
+          const key = keys[index]
+          if (_props[key] !== undefined) {
+            _variants[key] = _props[key]
+            delete _props[key]
+          }
+        }
+
+        _props.className = cx(classes(_variants as any))
+      } else {
+        _props.className = cx(classes(), props.className)
+      }
+
+      if (forwardRef) {
+        _props.ref = ref
+      }
 
       let _as = Tag
 
