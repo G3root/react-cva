@@ -2,11 +2,13 @@ import * as React from "react"
 import { cva, cx } from "class-variance-authority"
 import type {
   VariantProps,
-  ClassValue,
   ClassProp,
   VariantsSchema,
   VariantsConfig,
+  ClassValue,
 } from "class-variance-authority"
+
+export { VariantProps, ClassProp, VariantsSchema, VariantsConfig, ClassValue }
 
 export type IntrinsicElementsKeys = keyof JSX.IntrinsicElements
 
