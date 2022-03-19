@@ -4,18 +4,20 @@ specifiers:
   '@egoist/prettier-config': 1.0.0
   '@milahu/patch-package-with-pnpm-support': ^6.4.8
   '@types/react': ^17.0.40
-  class-variance-authority: 0.1.0
+  class-variance-authority: ^0.1.0
   prettier: 2.5.1
   react: ^17.0.2
   tsup: 5.12.1
   typescript: 4.6.2
   vitest: 0.6.1
 
+dependencies:
+  class-variance-authority: 0.1.0
+
 devDependencies:
   '@egoist/prettier-config': 1.0.0
   '@milahu/patch-package-with-pnpm-support': 6.4.8
   '@types/react': 17.0.40
-  class-variance-authority: 0.1.0
   prettier: 2.5.1
   react: 17.0.2
   tsup: 5.12.1_typescript@4.6.2
@@ -250,7 +252,7 @@ packages:
 
   /class-variance-authority/0.1.0:
     resolution: {integrity: sha512-oECEljk18E91VSns++dISUM68xmWiZkgQVEEAO+FMiCDLQRCbrSpVxzMObF8+lsPorRPD4Wm/wcTzDbH9gyObw==}
-    dev: true
+    dev: false
 
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
