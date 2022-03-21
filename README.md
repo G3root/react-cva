@@ -22,6 +22,11 @@
 
 this is a helper library for [cva](https://github.com/joe-bell/cva#readme) which this uses internally, for creating react components.
 for more information view [cva docs](https://github.com/joe-bell/cva#readme).
+
+## Acknowledgements
+
+- [**Class Variance Authority**](https://github.com/joe-bell/cva) ([joe bell](https://github.com/joe-bell))
+
 ## Installation
 
 ```sh

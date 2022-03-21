@@ -1,0 +1,3 @@
+This package includes a dependency package class-variance-authority developed by
+Joe Bell (https://github.com/joe-bell) which has been patched to export the types. 
+(https://github.com/G3root/react-cva/tree/main/patches)
