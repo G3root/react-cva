@@ -12,6 +12,10 @@ export { VariantProps, ClassProp, VariantsSchema, VariantsConfig, ClassValue }
 
 export type IntrinsicElementsKeys = keyof JSX.IntrinsicElements
 
+type ForwardRefFunction = {
+  (props: any, ref?: any): any
+}
+
 type VariantOBJ<Variants> =
   | (Variants extends VariantsSchema
       ? VariantsConfig<Variants> & ClassProp
@@ -20,7 +24,7 @@ type VariantOBJ<Variants> =
 
 export function styled<T extends IntrinsicElementsKeys>(
   Tag: T,
-  forwardRef?: boolean,
+  forwardRef?: ForwardRefFunction,
 ) {
   return function wrapper<Variants extends VariantsSchema>(
     base?: ClassValue,
@@ -75,6 +79,6 @@ export function styled<T extends IntrinsicElementsKeys>(
       return React.createElement(_as, _props)
     }
 
-    return forwardRef ? React.forwardRef(StyledWrapper) : StyledWrapper
+    return forwardRef ? forwardRef(StyledWrapper) : StyledWrapper
   }
 }

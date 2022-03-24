@@ -69,10 +69,11 @@ const Render = () => {
     <summary>with ref forwarding</summary>
 
 ```tsx
+import * as React from "react"
 import { styled } from "react-cva";
 import { useRef } from "react";
 
-const Button = styled("button", true)("test", {
+const Button = styled("button", React.forwardRef)("test", {
   variants: {
     margin: { 0: "m-0", 2: "m-2", 4: "m-4", 8: "m-8" },
     padding: { 0: "p-0", 2: "p-2", 4: "p-4", 8: "p-8" },
@@ -101,9 +102,10 @@ const Render = () => {
     <summary>with tailwind css</summary>
 
 ```tsx
+import * as React from "react"
 import { styled } from "react-cva";
 
-const Button = styled("button", true)("button", {
+const Button = styled("button", React.forwardRef)("button", {
   variants: {
     intent: {
       primary: [
@@ -147,10 +149,11 @@ const Render = () => {
     <summary>with css modules</summary>
 
 ```tsx
+import * as React from "react"
 import { styled } from "react-cva";
 import style from "./button.module.css";
 
-const Button = styled("button", true)(style.base, {
+const Button = styled("button", React.forwardRef)(style.base, {
   variants: {
     intent: {
       primary: style.primary,
@@ -189,13 +192,13 @@ const Render = () => {
 Builds a `styled` component
 
 ```ts
-const Component = styled("div",true)("base", options);
+const Component = styled("div",React.forwardRef)("base", options);
 ```
 
 #### Parameters
 
 1. `div`: tag type (`HtmlElement`)
-2. `true` should forward prop (`boolean` or `undefined`)
+2. `React.forwardRef`:a forward ref function (`function` or `undefined`)
 3. `base`: the base class name (`string`, `string[]` or `null`)
 4. `options` _(optional)_
    - `variants`: your variants schema
