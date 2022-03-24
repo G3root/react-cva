@@ -16,7 +16,7 @@ type ForwardRefFunction = {
   (props: any, ref?: any): any
 }
 
-type VariantOBJ<Variants> =
+export type VariantOBJ<Variants> =
   | (Variants extends VariantsSchema
       ? VariantsConfig<Variants> & ClassProp
       : ClassProp)
