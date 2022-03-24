@@ -43,7 +43,7 @@ export function styled<T extends IntrinsicElementsKeys>(
     function StyledWrapper(
       props: JSX.IntrinsicElements[typeof Tag] &
         Omit<VariantProps<typeof classes>, "class">,
-      ref: any,
+      ref?: any,
     ) {
       // Grab a shallow copy of the props
       let _props = Object.assign({}, props)
