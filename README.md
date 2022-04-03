@@ -36,76 +36,12 @@ npm i react-cva
 ## Examples
 
 <details>
-    <summary>without ref forwarding</summary>
-
-```tsx
-import { styled } from "react-cva";
-
-const Button = styled("button")("test", {
-  variants: {
-    margin: { 0: "m-0", 2: "m-2", 4: "m-4", 8: "m-8" },
-    padding: { 0: "p-0", 2: "p-2", 4: "p-4", 8: "p-8" },
-  },
-  defaultVariants: {
-    margin: 0,
-    padding: 0,
-  },
-});
-
-const Render = () => {
-  return (
-    <div>
-      <Button>test</Button>
-    </div>
-  );
-};
-
-```
-
-</details>
-
-
-<details>
-    <summary>with ref forwarding</summary>
-
-```tsx
-import * as React from "react"
-import { styled } from "react-cva";
-import { useRef } from "react";
-
-const Button = styled("button", React.forwardRef)("test", {
-  variants: {
-    margin: { 0: "m-0", 2: "m-2", 4: "m-4", 8: "m-8" },
-    padding: { 0: "p-0", 2: "p-2", 4: "p-4", 8: "p-8" },
-  },
-  defaultVariants: {
-    margin: 0,
-    padding: 0,
-  },
-});
-
-const Render = () => {
-  const ref = useRef<HTMLButtonElement | null>(null);
-
-  return (
-    <div>
-      <Button ref={ref}>test</Button>
-    </div>
-  );
-};
-
-```
-
-</details>
-
-<details>
     <summary>with tailwind css</summary>
 
 ```tsx
-import * as React from "react"
 import { styled } from "react-cva";
 
-const Button = styled("button", React.forwardRef)("button", {
+const Button = styled("button")("button", {
   variants: {
     intent: {
       primary: [
@@ -149,11 +85,10 @@ const Render = () => {
     <summary>with css modules</summary>
 
 ```tsx
-import * as React from "react"
 import { styled } from "react-cva";
 import style from "./button.module.css";
 
-const Button = styled("button", React.forwardRef)(style.base, {
+const Button = styled("button")(style.base, {
   variants: {
     intent: {
       primary: style.primary,
@@ -192,15 +127,14 @@ const Render = () => {
 Builds a `styled` component
 
 ```ts
-const Component = styled("div",React.forwardRef)("base", options);
+const Component = styled("div")("base", options);
 ```
 
 #### Parameters
 
 1. `div`: tag type (`HtmlElement`)
-2. `React.forwardRef`:a forward ref function (`function` or `undefined`)
-3. `base`: the base class name (`string`, `string[]` or `null`)
-4. `options` _(optional)_
+2. `base`: the base class name (`string`, `string[]` or `null`)
+3. `options` _(optional)_
    - `variants`: your variants schema
    - `compoundVariants`: variants based on a combination of previously defined variants
    - `defaultVariants`: set default values for previously defined variants
