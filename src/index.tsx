@@ -1,5 +1,6 @@
 import * as React from "react"
 import { cva, cx } from "class-variance-authority"
+
 import type {
   VariantProps,
   ClassProp,
@@ -11,6 +12,8 @@ import type {
 export { VariantProps, ClassProp, VariantsSchema, VariantsConfig, ClassValue }
 
 export type IntrinsicElementsKeys = keyof JSX.IntrinsicElements
+
+import { Props, Component, Options } from "./types"
 
 type VariantOBJ<Variants> =
   | (Variants extends VariantsSchema
@@ -37,13 +40,20 @@ export function styled<T extends IntrinsicElementsKeys>(Tag: T) {
   ) {
     const classes = cva(base, config)
 
-    function StyledWrapper(
-      props: JSX.IntrinsicElements[typeof Tag] &
-        Omit<VariantProps<typeof classes>, "class">,
-      ref?: any,
+    function createComponent<O extends Options>(
+      render: (props: Props<O>) => JSX.Element | null,
     ) {
-      // Grab a shallow copy of the props
-      let _props = Object.assign({}, props)
+      const Role = (props: Props<O>, ref: React.Ref<any>) =>
+        render({ ref, ...props })
+      return React.forwardRef(Role) as unknown as Component<O>
+    }
+
+    type ComponentProps = Omit<VariantProps<typeof classes>, "class"> & {
+      as?: T
+      className?: string
+    }
+    const Component = createComponent<ComponentProps>((props) => {
+      let _props = Object.assign({}, props) as typeof props
 
       if (config && config.variants) {
         const keys = Object.keys(config.variants)
@@ -63,15 +73,16 @@ export function styled<T extends IntrinsicElementsKeys>(Tag: T) {
         _props.className = cx(classes(), props.className)
       }
 
-      if (ref) {
-        _props.ref = ref
+      let Comp = Tag as any
+
+      if (_props.as) {
+        Comp = _props.as
+        delete _props.as
       }
 
-      let _as = Tag
+      return <Comp {..._props} />
+    })
 
-      return React.createElement(_as, _props)
-    }
-
-    return React.forwardRef(StyledWrapper)
+    return Component
   }
 }
