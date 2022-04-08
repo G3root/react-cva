@@ -17,7 +17,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "patch": "patch-package",
-    "build-fast": "tsup src/index.ts --format cjs,esm",
+    "build-fast": "tsup src/index.tsx --format cjs,esm",
     "build": "pnpm run build-fast -- --dts-resolve ",
     "test": "vitest run",
     "prepublishOnly": "pnpm run patch & pnpm run build"
@@ -35,6 +35,7 @@
     "vitest": "0.6.1"
   },
   "peerDependencies": {
-    "react": ">= 16.3.0"
+    "react": ">= 16.3.0",
+    "@types/react": ">= 16.3.0"
   }
 }
