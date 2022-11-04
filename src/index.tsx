@@ -9,7 +9,14 @@ import type {
   ClassValue,
 } from "class-variance-authority"
 
-export { VariantProps, ClassProp, VariantsSchema, VariantsConfig, ClassValue }
+export { 
+  VariantProps, 
+  ClassProp, 
+  VariantsSchema, 
+  VariantsConfig, 
+  ClassValue, 
+  cx 
+}
 
 export type IntrinsicElementsKeys = keyof JSX.IntrinsicElements
 
